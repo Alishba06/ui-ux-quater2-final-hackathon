@@ -31,7 +31,7 @@ const Cards = () => {
               className="w-full h-[250px] lg:h-[350px] object-cover rounded-sm"
             />
             <p className="text-[#2A254B] font-clash text-lg font-normal leading-[140%] mt-3 mb-2">
-              The Dandy chair
+            Rustic Vase Set
             </p>
             <p className="text-[#2A254B] font-satoshi text-md font-normal leading-[150%]">
               £160
