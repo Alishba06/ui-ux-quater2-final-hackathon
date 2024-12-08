@@ -41,7 +41,7 @@ const CHero = () => {
           />
           <p className="text-lg font-semibold mt-4">Unbeatable prices</p>
           <p className="font-satoshi text-sm md:text-base font-normal leading-[150%] text-[#2A254B] mt-2">
-            For our materials and quality, you won't find better prices anywhere
+            For our materials and quality, you won t find better prices anywhere
           </p>
         </div>
 
@@ -50,7 +50,7 @@ const CHero = () => {
           <LuSprout className="w-[40px] h-[40px] text-[#2A254B]" />
           <p className="text-lg font-semibold mt-4">Recycled packaging</p>
           <p className="font-satoshi text-sm md:text-base font-normal leading-[150%] text-[#2A254B] mt-2">
-            We use 100% recycled packaging to ensure our footprint is manageable
+            We use 100 recycled packaging to ensure our footprint is manageable
           </p>
         </div>
       </div>

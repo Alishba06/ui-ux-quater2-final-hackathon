@@ -1,13 +1,13 @@
 const Cards = () => {
     return (
-      <div className="px-4 md:px-8 lg:px-36"> {/* Padding for smaller screens */}
-        {/* Heading */}
+      <div className="px-4 md:px-8 lg:px-36"> 
+       
         <h1 className="text-[#2A254B] font-clash text-2xl md:text-3xl lg:text-4xl font-normal leading-normal mt-16">
           New ceramics
         </h1>
   
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6"> {/* Responsive grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6"> 
           
           <div>
             <img

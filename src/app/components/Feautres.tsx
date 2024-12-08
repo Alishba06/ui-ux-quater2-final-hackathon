@@ -8,12 +8,12 @@ const Feauter = () => {
             From a studio in London to a global brand with over 400 outlets
           </h2>
           <p className="text-[#6C6A7A] font-satoshi text-base leading-relaxed mb-6">
-            When we started Avion, the idea was simple. Make high-quality furniture
+            When we started Avion the idea was simple. Make high quality furniture
             affordable and available for the mass market.
           </p>
           <p className="text-[#6C6A7A] font-satoshi text-base leading-relaxed mb-6">
-            Handmade, and lovingly crafted furniture and homeware is what we do. From
-            bespoke pieces to timeless collections, our Chelsea boutique became the
+            Handmade and lovingly crafted furniture and homeware is what we do. From
+            bespoke pieces to timeless collections our Chelsea boutique became the
             hotbed for the London interior design community.
           </p>
           <button className="bg-white border w-[150px] h-[56px] rounded-sm  text-black left-[84px] mt-20">

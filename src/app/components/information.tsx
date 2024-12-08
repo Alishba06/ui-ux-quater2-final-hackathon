@@ -8,7 +8,7 @@ const Email = () => {
           </h1>
           <div className="text-center">
             <p>Sign up for our newsletter and receive exclusive offers on new</p>
-            <p>ranges, sales, pop up stores and more</p>
+            <p>ranges sales pop up stores and more</p>
           </div>
 
           <div className="">
@@ -17,7 +17,7 @@ const Email = () => {
           <span className="w-[150px]  text-sm   bg-[#2A254B] text-white flex justify-center items-center ">
            Sign Up
           </span>
-        </div>
+          </div>
           </div>
           
         </div>

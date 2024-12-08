@@ -69,7 +69,7 @@ const Footer = () => {
 
           <div className="mt-10 border-t border-[#4E4D93]">
   <div className="flex flex-col md:flex-row justify-between items-center text-sm pt-6">
-    <p className="text-lg">Copyright © 2024 Avion LTD</p>
+    <p className="text-lg">Copyright  2024 Avion LTD</p>
     <div className="flex space-x-4">
       <a href="#" className="hover:underline">
         <FaLinkedin className="w-[25px] h-[25px]" />

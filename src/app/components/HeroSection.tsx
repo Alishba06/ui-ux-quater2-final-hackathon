@@ -7,7 +7,7 @@ const Hero = () => {
           <div>
           <div className="flex flex-col items-start space-y-4 ml-[5%] ">
             <p className="text-lg font-semibold">
-              The furniture brand for the future,<br /> with timeless designs
+              The furniture brand for the future<br /> with timeless designs
             </p>
             <button className="text-white bg-[#f9f9f9]  bg-opacity-15 font-medium px-4 py-2 rounded hover:bg-gray-300">
               View collection
@@ -18,7 +18,7 @@ const Hero = () => {
             <div>
             <p className="mt-36 ml-[5%]">
               A new era in eco friendly furniture with Avelon, the French luxury retail brand
-              with nice fonts, tasteful colors and a beautiful way to display things digitally 
+              with nice fonts tasteful colors and a beautiful way to display things digitally 
               using modern web technologies.
             </p>
             </div>
