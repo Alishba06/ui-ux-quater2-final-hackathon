@@ -11,7 +11,7 @@ const Cards = () => {
           
           <div>
             <img
-              src="nextchair.png"
+              src="/nextchair.png"
               alt="chair"
               className="w-full h-[250px] lg:h-[350px] object-cover rounded-sm"
             />
@@ -26,7 +26,7 @@ const Cards = () => {
           
           <div>
             <img
-              src="photo.png"
+              src="/photo.png"
               alt="chair"
               className="w-full h-[250px] lg:h-[350px] object-cover rounded-sm"
             />
