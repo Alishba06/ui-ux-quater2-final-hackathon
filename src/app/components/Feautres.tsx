@@ -1,7 +1,7 @@
 
 const Feauter = () => {
     return (
-      <div className="w-full h-auto flex flex-col md:flex-row bg-white">
+      <div className="w-full h-full flex flex-col md:flex-row bg-white">
        
         <div className="w-full md:w-1/2 p-10 flex flex-col justify-center">
           <h2 className="text-[#2A254B] font-clash text-2xl md:text-3xl font-medium mb-4">
@@ -22,7 +22,7 @@ const Feauter = () => {
         </div>
   
        
-        <div className="w-full md:w-1/2 h-[300px] md:h-auto">
+        <div className="w-full h-full md:w-1/2 md:h-auto">
           <img
             src="/Features.png"
             alt="Sofa and Decoration"

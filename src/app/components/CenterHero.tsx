@@ -7,7 +7,7 @@ const CHero = () => {
     <div className="bg-white">
      
       <div className="w-full h-auto bg-white flex items-center justify-center px-4 md:px-8 py-6">
-        <p className="text-center text-xl mt-20 md:text-2xl lg:text-3xl font-medium text-[#22202E] font-clash text-[24px]  leading-normal">
+        <p className="md:text-center text-xl mt-20 md:text-2xl lg:text-3xl font-medium text-[#22202E] font-clash text-[24px]  leading-normal">
           What makes our brand different
         </p>
       </div>
