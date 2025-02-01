@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 
 import { TbTruckDelivery } from "react-icons/tb";
 import { CiCircleCheck } from "react-icons/ci";
@@ -9,14 +10,11 @@ const BrandProduct = () =>{
       
 
         <div className="bg-white">
-       
         <div className="w-full h-auto bg-white flex items-center justify-center px-4 md:px-8 py-6">
           <p className="text-center text-xl mt-20 md:text-2xl lg:text-3xl font-medium text-[#22202E] font-clash text-[24px]  leading-normal">
             What makes our brand different
           </p>
-        </div>
-  
-       
+        </div>     
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-8 md:px-16 lg:px-36 py-10">
          
           <div>
