@@ -1,3 +1,4 @@
+import AddtocardButton from "@/app/components/addtocardButton";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link"; // Import Link for navigation
 
@@ -6,11 +7,7 @@ interface ChairProduct {
   name: string;
   price: number;
   description: string;
-  image: {
-    asset: {
-      url: string;
-    };
-  };
+  image:string,
   dimensions: {
     height: string;
     width: string;
@@ -24,11 +21,8 @@ async function fetchChairProduct(id: string): Promise<ChairProduct | null> {
     name,
     price,
     description,
-    image {
-      asset -> {
-        url
-      }
-    },
+     "image": image.asset->url,
+
     dimensions {
       height,
       width,
@@ -45,11 +39,8 @@ async function fetchRelatedChairs(currentId: string): Promise<ChairProduct[]> {
     _id,
     name,
     price,
-    image {
-      asset -> {
-        url
-      }
-    }
+     "image": image.asset->url,
+
   }`;
 
   const results = await client.fetch<ChairProduct[]>(query, { currentId });
@@ -71,7 +62,7 @@ async function ChairProductPage({ params }: { params: { id: string } }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="w-full">
           <img
-            src={chairProduct.image.asset.url}
+            src={chairProduct.image}
             alt={chairProduct.name}
             className="w-full h-[350px] object-cover rounded-sm"
           />
@@ -80,6 +71,8 @@ async function ChairProductPage({ params }: { params: { id: string } }) {
           <h1 className="text-3xl font-bold">{chairProduct.name}</h1>
           <p className="text-xl font-semibold text-gray-700 mt-4">£{chairProduct.price}</p>
           <p className="text-md text-gray-600 mt-6">{chairProduct.description}</p>
+          <AddtocardButton product={chairProduct} />
+
           <div className="mt-4">
             <p><strong>Dimensions:</strong></p>
             <ul className="text-gray-600">
@@ -100,7 +93,7 @@ async function ChairProductPage({ params }: { params: { id: string } }) {
               <div key={related._id} className="w-full">
                 <Link href={`/categorieDetails/chairs/${related._id}`} passHref>
                   <img
-                    src={related.image.asset.url}
+                    src={related.image}
                     alt={related.name}
                     className="w-full h-[250px] object-cover rounded-sm"
                   />

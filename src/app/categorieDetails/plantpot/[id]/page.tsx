@@ -1,3 +1,4 @@
+import AddtocardButton from "@/app/components/addtocardButton";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link"; // Import Link for navigation
 
@@ -6,11 +7,7 @@ interface PlantProduct {
     name: string;
     price: number;
     description: string;
-    image: {
-      asset: {
-        url: string;
-      };
-    };
+    image: "string"
   }
   
   async function fetchPlantProduct(id: string): Promise<PlantProduct | null> {
@@ -19,11 +16,7 @@ interface PlantProduct {
       name,
       price,
       description,
-      image {
-        asset -> {
-          url
-        }
-      }
+       "image": image.asset->url,
     }`;
   
     const result = await client.fetch<PlantProduct | null>(query, { id });
@@ -35,11 +28,7 @@ interface PlantProduct {
       _id,
       name,
       price,
-      image {
-        asset -> {
-          url
-        }
-      }
+       "image": image.asset->url,
     }`;
   
     const results = await client.fetch<PlantProduct[]>(query, { currentId });
@@ -61,7 +50,7 @@ interface PlantProduct {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="w-full">
             <img
-              src={plantProduct.image.asset.url}
+              src={plantProduct.image}
               alt={plantProduct.name}
               className="w-full h-[350px] object-cover rounded-sm"
             />
@@ -70,6 +59,7 @@ interface PlantProduct {
             <h1 className="text-3xl font-bold">{plantProduct.name}</h1>
             <p className="text-xl font-semibold text-gray-700 mt-4">£{plantProduct.price}</p>
             <p className="text-md text-gray-600 mt-6">{plantProduct.description}</p>
+            <AddtocardButton product={plantProduct} />
           </div>
         </div>
   
@@ -82,7 +72,7 @@ interface PlantProduct {
                 <div key={related._id} className="w-full">
                   <Link href={`/categorieDetails/plantpot/${related._id}`} passHref>
                     <img
-                      src={related.image.asset.url}
+                      src={related.image}
                       alt={related.name}
                       className="w-full h-[250px] object-cover rounded-sm"
                     />

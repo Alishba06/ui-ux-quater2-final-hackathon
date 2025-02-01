@@ -42,7 +42,7 @@ function Navbar() {
        
         <Sheet >
       <SheetTrigger asChild>
-        <Button variant="outline"  className="md:hidden border-none  block"><RiMenuFill className="h-[30px] w-[30px]"/> </Button>
+        <Button variant="outline"  className="md:hidden border-none  block"><RiMenuFill className="h-[30px]  w-[30px]"/> </Button>
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
@@ -70,7 +70,7 @@ function Navbar() {
          <Link href='/'>Blog</Link>
          </div> */}
        <div className="flex items-center space-x-4 ml-auto"> {/* Space between icons */}
-       <PiShoppingCartLight className="w-[16px] h-[16px] md:block hidden" />
+     <Link href={'/cart'}><PiShoppingCartLight className="w-[16px] h-[16px] md:block hidden" /></Link>  
        <FaRegCircleUser className="text-[16px] h-[16px] md:block hidden" />
        </div>
 

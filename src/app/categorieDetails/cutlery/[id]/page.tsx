@@ -1,3 +1,4 @@
+import AddtocardButton from "@/app/components/addtocardButton";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link"; // Import Link for navigation
 
@@ -6,11 +7,7 @@ interface CutleryProduct {
   name: string;
   price: number;
   description: string;
-  image: {
-    asset: {
-      url: string;
-    };
-  };
+  image: "string";
 }
 
 async function fetchCutleryProduct(id: string): Promise<CutleryProduct | null> {
@@ -19,11 +16,8 @@ async function fetchCutleryProduct(id: string): Promise<CutleryProduct | null> {
     name,
     price,
     description,
-    image {
-      asset -> {
-        url
-      }
-    }
+     "image": image.asset->url,
+
   }`;
 
   const result = await client.fetch<CutleryProduct | null>(query, { id });
@@ -35,11 +29,7 @@ async function fetchRelatedCutlery(currentId: string): Promise<CutleryProduct[]>
     _id,
     name,
     price,
-    image {
-      asset -> {
-        url
-      }
-    }
+  "image": image.asset->url,
   }`;
 
   const results = await client.fetch<CutleryProduct[]>(query, { currentId });
@@ -61,7 +51,7 @@ async function CutleryProductPage({ params }: { params: { id: string } }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="w-full">
           <img
-            src={cutleryProduct.image.asset.url}
+            src={cutleryProduct.image}
             alt={cutleryProduct.name}
             className="w-full h-[350px] object-cover rounded-sm"
           />
@@ -70,7 +60,10 @@ async function CutleryProductPage({ params }: { params: { id: string } }) {
           <h1 className="text-3xl font-bold">{cutleryProduct.name}</h1>
           <p className="text-xl font-semibold text-gray-700 mt-4">£{cutleryProduct.price}</p>
           <p className="text-md text-gray-600 mt-6">{cutleryProduct.description}</p>
+          <AddtocardButton product={cutleryProduct} />
+
         </div>
+
       </div>
 
       {/* Related Cutlery Section */}
@@ -82,7 +75,7 @@ async function CutleryProductPage({ params }: { params: { id: string } }) {
               <div key={related._id} className="w-full">
                 <Link href={`/categorieDetails/cutlery/${related._id}`} passHref>
                   <img
-                    src={related.image.asset.url}
+                   src={related.image}
                     alt={related.name}
                     className="w-full h-[250px] object-cover rounded-sm"
                   />

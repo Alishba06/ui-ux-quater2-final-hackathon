@@ -1,3 +1,4 @@
+import AddtocardButton from "@/app/components/addtocardButton";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link"; // Import Link for navigation
 
@@ -6,11 +7,7 @@ interface TablewareProduct {
   name: string;
   price: number;
   description: string;
-  image: {
-    asset: {
-      url: string;
-    };
-  };
+  image: string;
 }
 
 async function fetchTablewareProduct(id: string): Promise<TablewareProduct | null> {
@@ -19,11 +16,7 @@ async function fetchTablewareProduct(id: string): Promise<TablewareProduct | nul
     name,
     price,
     description,
-    image {
-      asset -> {
-        url
-      }
-    }
+    "image": image.asset->url,
   }`;
 
   const result = await client.fetch<TablewareProduct | null>(query, { id });
@@ -35,11 +28,7 @@ async function fetchRelatedTablewares(currentId: string): Promise<TablewareProdu
     _id,
     name,
     price,
-    image {
-      asset -> {
-        url
-      }
-    }
+    "image": image.asset->url,
   }`;
 
   const results = await client.fetch<TablewareProduct[]>(query, { currentId });
@@ -61,7 +50,7 @@ async function TablewareProductPage({ params }: { params: { id: string } }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="w-full">
           <img
-            src={tablewareProduct.image.asset.url}
+            src={tablewareProduct.image}
             alt={tablewareProduct.name}
             className="w-full h-[350px] object-cover rounded-sm"
           />
@@ -70,6 +59,7 @@ async function TablewareProductPage({ params }: { params: { id: string } }) {
           <h1 className="text-3xl font-bold">{tablewareProduct.name}</h1>
           <p className="text-xl font-semibold text-gray-700 mt-4">£{tablewareProduct.price}</p>
           <p className="text-md text-gray-600 mt-6">{tablewareProduct.description}</p>
+          <AddtocardButton product={tablewareProduct} />
         </div>
       </div>
 
@@ -82,7 +72,7 @@ async function TablewareProductPage({ params }: { params: { id: string } }) {
               <div key={related._id} className="w-full">
                 <Link href={`/categorieDetails/tablewares/${related._id}`} passHref>
                   <img
-                    src={related.image.asset.url}
+                    src={related.image}
                     alt={related.name}
                     className="w-full h-[250px] object-cover rounded-sm"
                   />
@@ -95,6 +85,7 @@ async function TablewareProductPage({ params }: { params: { id: string } }) {
                 <p className="text-[#2A254B] font-satoshi text-md font-normal leading-[150%]">
                   £{related.price}
                 </p>
+               
               </div>
             ))
           ) : (

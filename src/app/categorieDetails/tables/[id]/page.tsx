@@ -1,3 +1,4 @@
+import AddtocardButton from "@/app/components/addtocardButton";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link"; // Import Link for navigation
 
@@ -6,11 +7,7 @@ interface TableProduct {
   name: string;
   price: number;
   description: string;
-  image: {
-    asset: {
-      url: string;
-    };
-  };
+  image: string;
   dimensions: {
     height: string;
     width: string;
@@ -24,11 +21,7 @@ async function fetchTableProduct(id: string): Promise<TableProduct | null> {
     name,
     price,
     description,
-    image {
-      asset -> {
-        url
-      }
-    },
+    "image": image.asset->url,
     dimensions {
       height,
       width,
@@ -45,11 +38,7 @@ async function fetchRelatedTables(currentId: string): Promise<TableProduct[]> {
     _id,
     name,
     price,
-    image {
-      asset -> {
-        url
-      }
-    }
+    "image": image.asset->url,
   }`;
 
   const results = await client.fetch<TableProduct[]>(query, { currentId });
@@ -71,17 +60,32 @@ async function TableProductPage({ params }: { params: { id: string } }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="w-full">
           <img
-            src={tableProduct.image.asset.url}
+            src={tableProduct.image}
             alt={tableProduct.name}
             className="w-full h-[350px] object-cover rounded-sm"
           />
         </div>
         <div className="w-full">
           <h1 className="text-3xl font-bold">{tableProduct.name}</h1>
-          <p className="text-xl font-semibold text-gray-700 mt-4">£{tableProduct.price}</p>
-          <p className="text-md text-gray-600 mt-6">{tableProduct.description}</p>
+          <p className="text-xl font-semibold text-gray-700 mt-4">
+            £{tableProduct.price}
+          </p>
+          <p className="text-md text-gray-600 mt-6">
+            {tableProduct.description}
+          </p>
+          <AddtocardButton
+            product={{
+              _id: tableProduct._id,
+              name: tableProduct.name,
+              price: tableProduct.price,
+              description: tableProduct.description,
+              image: tableProduct.image,
+            }}
+          />
           <div className="mt-4">
-            <p><strong>Dimensions:</strong></p>
+            <p>
+              <strong>Dimensions:</strong>
+            </p>
             <ul className="text-gray-600">
               <li>Height: {tableProduct.dimensions.height}</li>
               <li>Width: {tableProduct.dimensions.width}</li>
@@ -100,7 +104,7 @@ async function TableProductPage({ params }: { params: { id: string } }) {
               <div key={related._id} className="w-full">
                 <Link href={`/categorieDetails/tables/${related._id}`} passHref>
                   <img
-                    src={related.image.asset.url}
+                    src={related.image}
                     alt={related.name}
                     className="w-full h-[250px] object-cover rounded-sm"
                   />
@@ -125,3 +129,21 @@ async function TableProductPage({ params }: { params: { id: string } }) {
 }
 
 export default TableProductPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

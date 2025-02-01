@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client"
+import AddtocardButton from "@/app/components/addtocardButton";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link"; 
 
@@ -8,11 +9,7 @@ interface CeramicProduct {
   name: string;
   price: number;
   description: string;
-  image: {
-    asset: {
-      url: string;
-    };
-  };
+  image: string
 }
 
 async function fetchCeramicProduct(id: string): Promise<CeramicProduct | null> {
@@ -21,11 +18,8 @@ async function fetchCeramicProduct(id: string): Promise<CeramicProduct | null> {
     name,
     price,
     description,
-    image {
-      asset -> {
-        url
-      }
-    }
+        "image": image.asset->url,
+
   }`;
 
   const result = await client.fetch<CeramicProduct | null>(query, { id });
@@ -37,11 +31,8 @@ async function fetchRelatedCeramics(currentId: string): Promise<CeramicProduct[]
     _id,
     name,
     price,
-    image {
-      asset -> {
-        url
-      }
-    }
+    "image": image.asset->url,
+
   }`;
 
   const results = await client.fetch<CeramicProduct[]>(query, { currentId });
@@ -65,7 +56,7 @@ async function CeramicProductPage({ params }: { params: { id: string } }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="w-full">
           <img
-            src={ceramicProduct.image.asset.url}
+            src={ceramicProduct.image}
             alt={ceramicProduct.name}
             className="w-full h-[350px] object-cover rounded-sm"
           />
@@ -74,6 +65,7 @@ async function CeramicProductPage({ params }: { params: { id: string } }) {
           <h1 className="text-3xl font-bold">{ceramicProduct.name}</h1>
           <p className="text-xl font-semibold text-gray-700 mt-4">£{ceramicProduct.price}</p>
           <p className="text-md text-gray-600 mt-6">{ceramicProduct.description}</p>
+          <AddtocardButton product={ceramicProduct} />
         </div>
       </div>
 
@@ -86,7 +78,7 @@ async function CeramicProductPage({ params }: { params: { id: string } }) {
               <div key={related._id} className="w-full">
                 <Link href={`/categorieDetails/ceramics/${related._id}`} passHref>
                   <img
-                    src={related.image.asset.url}
+                    src={related.image}
                     alt={related.name}
                     className="w-full h-[250px] object-cover rounded-sm"
                   />

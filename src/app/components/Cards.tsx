@@ -13,11 +13,7 @@ interface Product {
   _id: string;
   name: string;
   price: number;
-  image: {
-    asset: {
-      url: string;
-    };
-  };
+  image: string
 }
 
 
@@ -33,18 +29,7 @@ const Cards = () => {
     getProducts();
   }, []);
 
-   const handleAddToCart = (e: React.MouseEvent , product: Product) =>{
-      e.preventDefault()
-      Swal.fire({
-        position: "top-right",
-        icon: "success",
-        title: `${product.name} Item added successfully`,
-        showConfirmButton: false,
-        timer: 1000
-      })
-      addtoCart(product)
-     
-    }
+   
 
   return (
     <div className="px-4 md:px-8 lg:px-36 h-full">
@@ -69,13 +54,7 @@ const Cards = () => {
         <p className="text-[#2A254B] font-satoshi text-md font-normal leading-[150%]">
           £{product.price}
         </p>
-      <button
-      className="bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg 
-      hover:scla-110 transition-transform duration-300 ease-in-out"
-      onClick={(e) => handleAddToCart(e, product)}
-      >
-     Add To Cart
-    </button>
+     
     </Link>
 
    </div>
