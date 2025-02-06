@@ -1,4 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import AddtocardButton from "@/app/components/addtocardButton";
+import Brand from "@/app/home2/brand";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link"; // Import Link for navigation
 
@@ -59,11 +61,14 @@ interface PlantProduct {
             <h1 className="text-3xl font-bold">{plantProduct.name}</h1>
             <p className="text-xl font-semibold text-gray-700 mt-4">£{plantProduct.price}</p>
             <p className="text-md text-gray-600 mt-6">{plantProduct.description}</p>
+            <div className="mt-6">
             <AddtocardButton product={plantProduct} />
+            </div>
           </div>
         </div>
   
         {/* Related Plants Section */}
+        <div>
         <div className="mt-12">
           <h2 className="text-2xl font-bold mb-6">Related Plant Products</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
@@ -93,6 +98,8 @@ interface PlantProduct {
           </div>
         </div>
       </div>
+     <Brand/>
+    </div>
     );
   }
   

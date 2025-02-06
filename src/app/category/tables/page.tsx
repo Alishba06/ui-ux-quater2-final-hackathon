@@ -1,11 +1,15 @@
+
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link";
+import ReviewsAndRatings from "@/app/components/ReviewsAndRatings";
+import Wishlist from "@/app/components/wishlist";
+import Brand from "@/app/home2/brand";
 
 interface Table {
-  _id: string; // Optional because it's not fetched from Sanity
+  _id: string;
   name: string;
   title: string;
   imageUrl: string;
@@ -13,15 +17,14 @@ interface Table {
 }
 
 const TableProduct = () => {
-  const [tables, setTables] = useState<Table[]>([]); // Specify type for tables state
+  const [tables, setTables] = useState<Table[]>([]);
 
-  // Fetch data from Sanity
   useEffect(() => {
     const fetchTables = async () => {
       try {
         const query =
           '*[_type == "tables"]{_id ,name, title, price, "imageUrl": image.asset->url}';
-        const result = await client.fetch<Table[]>(query); // Specify type for fetch result
+        const result = await client.fetch<Table[]>(query);
         setTables(result);
       } catch (error) {
         console.error("Error fetching tables:", error);
@@ -32,43 +35,49 @@ const TableProduct = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className="text-dark-primary font-clash text-[30px] font-normal leading-[1.4] text-[#2A254B] text-center mt-20">
+    <div className="bg-[#F9F9F9] min-h-screen py-10">
+      <h1 className="text-dark-primary font-clash text-4xl font-bold text-[#2A254B] text-center mt-10">
         Discover Your Perfect Table
       </h1>
 
-      <div className="px-4 md:px-8 lg:px-36 h-full">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-[10px] lg:gap-6 mt-6">
-          {tables.map((table, index) => (
-            <div key={index} className="w-full">
+      <div className="px-4 md:px-8 lg:px-36">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-10">
+          {tables.map((table) => (
+            <div
+              key={table._id}
+              className="bg-white rounded-2xl shadow-md hover:shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300"
+            >
               <Link href={`/categorieDetails/tables/${table._id}`}>
-              <img
-                src={table.imageUrl} // Use correct field for image
-                alt={table.name} // Use correct field for name
-                className="w-full h-[170px] md:h-[250px] lg:h-[310px] object-cover"
-              />
+                <img
+                  src={table.imageUrl}
+                  alt={table.name}
+                  className="w-full h-56 object-cover"
+                />
               </Link>
-              <p className="text-[#2A254B] font-clash text-lg font-normal leading-[140%] mt-3 mb-2">
-                {table.title} {/* Use title from fetched data */}
-              </p>
-              <p className="text-[#2A254B] font-satoshi text-md font-normal leading-[150%]">
-                £{table.price} {/* Use price from fetched data */}
-              </p>
+              <div className="p-4">
+                <h2 className="text-[#2A254B] font-clash text-xl font-semibold mb-2">
+                  {table.title}
+                </h2>
+                <p className="text-[#6B7280] font-satoshi text-md">
+                  £{table.price}
+                </p>
+                <ReviewsAndRatings/>
+                <Wishlist productId={""}/>
+              </div>
             </div>
           ))}
         </div>
 
-        <div className="flex justify-center items-center mt-10 mb-10">
-          <button className="text-black bg-[#F9F9F9] font-medium px-6 py-2 rounded hover:bg-gray-300">
-            View collection
+        <div className="flex justify-center items-center mt-10">
+          <button className="bg-black text-white font-medium px-8 py-3 rounded-md hover:bg-gray-800">
+            View Collection
           </button>
         </div>
       </div>
+      <Brand/>
     </div>
   );
 };
 
 export default TableProduct;
-
-
 

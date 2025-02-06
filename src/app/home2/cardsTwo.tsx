@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 const CardTwo = () => {
     return (
       <div className="px-4 md:px-8 lg:px-36"> 

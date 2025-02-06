@@ -35,7 +35,7 @@ export const Ceramic = defineType({
       title: "Image",
       type: "image",
       options: {
-        hotspot: true, // Enable cropping and focal point selection
+        hotspot: true, 
       },
     }),
     defineField({
@@ -48,7 +48,7 @@ export const Ceramic = defineType({
     defineField({
       name: "dimensions",
       title: "Dimensions",
-      type: "object", // Composite object for dimensions
+      type: "object", 
       fields: [
         { name: "height", title: "Height", type: "string" },
         { name: "width", title: "Width", type: "string" },
@@ -59,47 +59,3 @@ export const Ceramic = defineType({
   ],
 });
 
-
-
-
-
-
-
-
-
-// import { defineType, defineField } from "sanity";
-
-// export const Ceramic = defineType({
-//     name: "ceramic",
-//     title: "Ceramic",
-//     type: "document",
-//     fields: [
-//         defineField({
-//             name: "name",
-//             title: "Name",
-//             type: "string",
-//             validation: (rule) => rule.required(),
-//         }),
-//         defineField({
-//             name: "title",
-//             title: "Title",
-//             type: "string",
-//             validation: (rule) => rule.required(),
-//         }),
-//         defineField({
-//             name: "price",
-//             title: "Price",
-//             type: "number",
-//             validation: (rule) =>
-//                 rule.min(0).warning("Price should not be negative"),
-//         }),
-//         defineField({
-//             name: "image",
-//             title: "Image",
-//             type: "image",
-//             options: {
-//                 hotspot: true, // Enable cropping and focal point selection
-//             }
-//         })
-//     ]
-// });

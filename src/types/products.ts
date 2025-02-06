@@ -1,5 +1,7 @@
 
 export interface Product {
+  selectedPlant: any;
+  quantity: any;
   id: string;
   name: string;
   price: number;
@@ -13,24 +15,6 @@ export interface Product {
     };
     hotspot?: boolean;
   };
-  category?: string; // Added category to distinguish different types
+  category?: string; 
 }
 
-
-
-// export interface Product {
-//     id: string; 
-//     name: string;
-//     price: number; 
-//     inventory: number;
-//     image?: {
-//       _type: 'image'; 
-//       asset: {
-//         url: string | StaticImport;
-//         _ref: string;
-//         _type: 'reference';
-//       };
-//       hotspot?: boolean;
-//     }; 
-//   }
-  

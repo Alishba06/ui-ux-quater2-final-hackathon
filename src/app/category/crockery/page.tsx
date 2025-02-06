@@ -1,11 +1,15 @@
+/* eslint-disable @next/next/no-img-element */
 
 "use client";
 import React, { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link";
+import ReviewsAndRatings from "@/app/components/ReviewsAndRatings";
+import Wishlist from "@/app/components/wishlist";
+import Brand from "@/app/home2/brand";
 
 interface Crockery {
-  _id: string; // Optional because it's not fetched from Sanity
+  _id: string;
   name: string;
   title: string;
   imageUrl: string;
@@ -13,15 +17,14 @@ interface Crockery {
 }
 
 const CrockeryProduct = () => {
-  const [crockery, setCrockery] = useState<Crockery[]>([]); // Specify type for crockery state
+  const [crockery, setCrockery] = useState<Crockery[]>([]);
 
-  // Fetch data from Sanity
   useEffect(() => {
     const fetchCrockery = async () => {
       try {
         const query =
           '*[_type == "crockery"]{_id ,name, title, price, "imageUrl": image.asset->url}';
-        const result = await client.fetch<Crockery[]>(query); // Specify type for fetch result
+        const result = await client.fetch<Crockery[]>(query);
         setCrockery(result);
       } catch (error) {
         console.error("Error fetching crockery:", error);
@@ -32,38 +35,46 @@ const CrockeryProduct = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className="text-dark-primary font-clash text-[30px] font-normal leading-[1.4] text-[#2A254B] text-center mt-20">
+    <div className="bg-[#F9F9F9] min-h-screen py-10">
+      <h1 className="text-dark-primary font-clash text-4xl font-bold text-[#2A254B] text-center mt-10">
         Elegant Crockery for Your Table
       </h1>
 
       <div className="px-4 md:px-8 lg:px-36 h-full">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-[10px] lg:gap-6 mt-6">
-          {crockery.map((item, index) => (
-            <div key={index} className="w-full">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-10">
+          {crockery.map((item) => (
+            <div
+              key={item._id}
+              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all"
+            >
               <Link href={`/categorieDetails/crockerys/${item._id}`}>
-              <img
-                src={item.imageUrl} // Use correct field for image
-                alt={item.name} // Use correct field for name
-                className="w-full h-[170px] md:h-[250px] lg:h-[310px] object-cover"
-              />
+                <img
+                  src={item.imageUrl}
+                  alt={item.name}
+                  className="w-full h-56 object-cover"
+                />
               </Link>
-              <p className="text-[#2A254B] font-clash text-lg font-normal leading-[140%] mt-3 mb-2">
-                {item.title} {/* Use title from fetched data */}
-              </p>
-              <p className="text-[#2A254B] font-satoshi text-md font-normal leading-[150%]">
-                £{item.price} {/* Use price from fetched data */}
-              </p>
+              <div className="p-4">
+                <p className="text-[#2A254B] font-clash text-lg font-semibold mb-1">
+                  {item.title}
+                </p>
+                <p className="text-[#2A254B] font-satoshi text-md">
+                  £{item.price}
+                </p>
+                <ReviewsAndRatings/>
+                <Wishlist productId={""}/>
+              </div>
             </div>
           ))}
         </div>
 
-        <div className="flex justify-center items-center mt-10 mb-10">
-          <button className="text-black bg-[#F9F9F9] font-medium px-6 py-2 rounded hover:bg-gray-300">
+        <div className="flex justify-center items-center mt-10">
+          <button className="bg-black text-white font-medium px-8 py-3 rounded-md hover:bg-gray-800">
             View collection
           </button>
         </div>
       </div>
+      <Brand/>
     </div>
   );
 };

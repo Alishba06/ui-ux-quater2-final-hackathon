@@ -37,7 +37,7 @@ const BrandProduct = () =>{
          
           <div>
             <img
-              src="Purchase.png"
+              src="/Purchase.png"
               alt="purchase"
               className="w-[40px] h-[40px]"
             />

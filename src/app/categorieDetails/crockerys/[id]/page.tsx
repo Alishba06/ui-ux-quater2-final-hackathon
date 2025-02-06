@@ -1,4 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import AddtocardButton from "@/app/components/addtocardButton";
+import Brand from "@/app/home2/brand";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link"; // Import Link for navigation
 
@@ -69,19 +71,18 @@ async function CrockeryProductPage({ params }: { params: { id: string } }) {
           <h1 className="text-3xl font-bold">{crockeryProduct.name}</h1>
           <p className="text-xl font-semibold text-gray-700 mt-4">£{crockeryProduct.price}</p>
           <p className="text-md text-gray-600 mt-6">{crockeryProduct.description}</p>
-          <AddtocardButton product={crockeryProduct} />
-          <div className="mt-4">
-          <p><strong>Dimensions:</strong></p>
-               <ul className="text-gray-600">
-            <li>Height: {crockeryProduct?.dimensions?.height || "N/A"}</li>
-            <li>Width: {crockeryProduct?.dimensions?.width || "N/A"}</li>
-            <li>Depth: {crockeryProduct?.dimensions?.depth || "N/A"}</li>
-           </ul>
+
+          <div className="mt-6 flex flex-col sm:flex-row sm:justify-between items-start sm:items-center border-t pt-4">
+    
+            <div className="mt-4 sm:mt-0">
+              <AddtocardButton product={crockeryProduct} />
+            </div>
           </div>
         </div>
       </div>
 
       {/* Related Crockery Section */}
+      <div>
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-6">Related Crockery Products</h2>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
@@ -111,6 +112,8 @@ async function CrockeryProductPage({ params }: { params: { id: string } }) {
         </div>
       </div>
     </div>
+    <Brand/>
+  </div>
   );
 }
 

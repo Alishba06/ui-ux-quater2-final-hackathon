@@ -8,7 +8,8 @@ import { Tablewares } from './tableware'
 import { Cutlery } from './cutlery'
 import { Ceramic } from './ceramic'
 import { Plant } from './plantpont'
+import order from './order'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [Category,product,Chairs,Tables,Crockery,Tablewares,Cutlery,Ceramic,Plant]
+  types: [Category,product,Chairs,Tables,Crockery,Tablewares,Cutlery,Ceramic,Plant,order]
 }

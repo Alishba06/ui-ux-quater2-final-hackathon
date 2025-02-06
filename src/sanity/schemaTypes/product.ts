@@ -22,8 +22,8 @@ export const product = defineType({
       title: "Slug",
       type: "slug",
       options: {
-        source: "name",  // Slug will be auto-generated based on 'name' field
-        maxLength: 96,   // Optional max length
+        source: "name",  
+        maxLength: 96,   
       },
       validation: (rule) => rule.required(),
     }),

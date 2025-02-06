@@ -1,4 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import AddtocardButton from "@/app/components/addtocardButton";
+import Brand from "@/app/home2/brand";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link"; // Import Link for navigation
 
@@ -60,13 +62,15 @@ async function CutleryProductPage({ params }: { params: { id: string } }) {
           <h1 className="text-3xl font-bold">{cutleryProduct.name}</h1>
           <p className="text-xl font-semibold text-gray-700 mt-4">£{cutleryProduct.price}</p>
           <p className="text-md text-gray-600 mt-6">{cutleryProduct.description}</p>
+          <div className="mt-6">
           <AddtocardButton product={cutleryProduct} />
-
+          </div>
         </div>
 
       </div>
 
       {/* Related Cutlery Section */}
+      <div>
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-6">Related Cutlery Products</h2>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
@@ -96,6 +100,8 @@ async function CutleryProductPage({ params }: { params: { id: string } }) {
         </div>
       </div>
     </div>
+    <Brand/>
+  </div>
   );
 }
 

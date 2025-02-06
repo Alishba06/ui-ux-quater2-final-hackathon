@@ -3,9 +3,12 @@
 import React, { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link";
+import ReviewsAndRatings from "@/app/components/ReviewsAndRatings";
+import Wishlist from "@/app/components/wishlist";
+import Brand from "@/app/home2/brand";
 
 interface Tableware {
-  _id: string; // Optional because it's not fetched from Sanity
+  _id: string;
   name: string;
   title: string;
   imageUrl: string;
@@ -13,15 +16,14 @@ interface Tableware {
 }
 
 const TablewareProduct = () => {
-  const [tablewares, setTablewares] = useState<Tableware[]>([]); // Specify type for tablewares state
+  const [tablewares, setTablewares] = useState<Tableware[]>([]);
 
-  // Fetch data from Sanity
   useEffect(() => {
     const fetchTablewares = async () => {
       try {
         const query =
-        '*[_type == "tablewares"]{_id, name, title, price, "imageUrl": image.asset->url}';
-        const result = await client.fetch<Tableware[]>(query); // Specify type for fetch result
+          '*[_type == "tablewares"]{_id, name, title, price, "imageUrl": image.asset->url}';
+        const result = await client.fetch<Tableware[]>(query);
         setTablewares(result);
       } catch (error) {
         console.error("Error fetching tablewares:", error);
@@ -32,40 +34,49 @@ const TablewareProduct = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className="text-dark-primary font-clash text-[30px] font-normal leading-[1.4] text-[#2A254B] text-center mt-20">
+    <div className="bg-[#F9F9F9] min-h-screen py-10">
+      <h1 className="text-dark-primary font-clash text-4xl font-bold text-[#2A254B] text-center mt-10">
         Elegant Tablewares for Your Home
       </h1>
 
-      <div className="px-4 md:px-8 lg:px-36 h-full">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-[10px] lg:gap-6 mt-6">
-          {tablewares.map((item, index) => (
-            <div key={index} className="w-full">
+      <div className="px-4 md:px-8 lg:px-36">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-10">
+          {tablewares.map((item) => (
+            <div
+              key={item._id}
+              className="bg-white rounded-xl shadow-lg hover:shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300"
+            >
               <Link href={`/categorieDetails/tablewares/${item._id}`}>
-              <img
-                src={item.imageUrl} // Use correct field for image
-                alt={item.name} // Use correct field for name
-                className="w-full h-[170px] md:h-[250px] lg:h-[310px] object-cover"
-              />
+                <img
+                  src={item.imageUrl}
+                  alt={item.name}
+                  className="w-full h-56 object-cover"
+                />
               </Link>
-              <p className="text-[#2A254B] font-clash text-lg font-normal leading-[140%] mt-3 mb-2">
-                {item.title} {/* Use title from fetched data */}
-              </p>
-              <p className="text-[#2A254B] font-satoshi text-md font-normal leading-[150% ]">
-                £{item.price} {/* Use price from fetched data */}
-              </p>
+              <div className="p-4">
+                <p className="text-[#2A254B] font-clash text-xl font-semibold mb-2">
+                  {item.title}
+                </p>
+                <p className="text-[#2A254B] font-satoshi text-md">
+                  £{item.price}
+                </p>
+                <ReviewsAndRatings/>
+                <Wishlist productId={""}/>
+              </div>
             </div>
           ))}
         </div>
 
-        <div className="flex justify-center items-center mt-10 mb-10">
-          <button className="text-black bg-[#F9F9F9] font-medium px-6 py-2 rounded hover:bg-gray-300">
-            View collection
+        <div className="flex justify-center items-center mt-10">
+          <button className="bg-black text-white font-medium px-8 py-3 rounded-md hover:bg-gray-800">
+            View Collection
           </button>
         </div>
       </div>
+      <Brand/>
     </div>
   );
 };
 
 export default TablewareProduct;
+

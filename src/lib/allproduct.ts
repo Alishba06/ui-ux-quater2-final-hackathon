@@ -14,6 +14,6 @@ export const fetchAllProducts = async () => {
     dimensions
   }`;
 
-  const products = await client.fetch(query); // Query Sanity se fetch karna
-  return products; // Products return karna
+  const products = await client.fetch(query); 
+  return products; 
 };

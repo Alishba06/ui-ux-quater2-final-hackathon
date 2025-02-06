@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { TbTruckDelivery } from "react-icons/tb";
 import { CiCircleCheck } from "react-icons/ci";
 import { LuSprout } from "react-icons/lu";

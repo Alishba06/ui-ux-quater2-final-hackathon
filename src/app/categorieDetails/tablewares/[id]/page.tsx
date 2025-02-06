@@ -1,4 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import AddtocardButton from "@/app/components/addtocardButton";
+import Brand from "@/app/home2/brand";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link"; // Import Link for navigation
 
@@ -52,40 +54,45 @@ async function TablewareProductPage({ params }: { params: { id: string } }) {
           <img
             src={tablewareProduct.image}
             alt={tablewareProduct.name}
-            className="w-full h-[350px] object-cover rounded-sm"
+            className="w-full h-[350px] object-cover rounded-lg shadow-lg"
           />
         </div>
         <div className="w-full">
-          <h1 className="text-3xl font-bold">{tablewareProduct.name}</h1>
+          <h1 className="text-3xl font-bold text-gray-800">{tablewareProduct.name}</h1>
           <p className="text-xl font-semibold text-gray-700 mt-4">£{tablewareProduct.price}</p>
           <p className="text-md text-gray-600 mt-6">{tablewareProduct.description}</p>
-          <AddtocardButton product={tablewareProduct} />
+          {/* Adding gap between description and button */}
+          <div className="mt-6">
+            <AddtocardButton product={tablewareProduct} />
+          </div>
         </div>
       </div>
 
       {/* Related Tableware Products Section */}
+      <div>
       <div className="mt-12">
-        <h2 className="text-2xl font-bold mb-6">Related Tableware Products</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-6">Related Tableware Products</h2>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {relatedTablewares.length > 0 ? (
             relatedTablewares.slice(0, 4).map((related) => (
-              <div key={related._id} className="w-full">
+              <div key={related._id} className="w-full bg-white rounded-lg shadow-lg overflow-hidden">
                 <Link href={`/categorieDetails/tablewares/${related._id}`} passHref>
                   <img
                     src={related.image}
                     alt={related.name}
-                    className="w-full h-[250px] object-cover rounded-sm"
+                    className="w-full h-[250px] object-cover rounded-t-lg"
                   />
                 </Link>
-                <p className="text-[#2A254B] font-clash text-lg font-normal leading-[140%] mt-3 mb-2">
-                  <Link href={`/tablewares/${related._id}`} passHref>
-                    {related.name}
-                  </Link>
-                </p>
-                <p className="text-[#2A254B] font-satoshi text-md font-normal leading-[150%]">
-                  £{related.price}
-                </p>
-               
+                <div className="p-4">
+                  <p className="text-[#2A254B] font-clash text-lg font-normal leading-[140%] mb-2">
+                    <Link href={`/tablewares/${related._id}`} passHref>
+                      {related.name}
+                    </Link>
+                  </p>
+                  <p className="text-[#2A254B] font-satoshi text-md font-normal leading-[150%]">
+                    £{related.price}
+                  </p>
+                </div>
               </div>
             ))
           ) : (
@@ -94,6 +101,8 @@ async function TablewareProductPage({ params }: { params: { id: string } }) {
         </div>
       </div>
     </div>
+    <Brand/>
+  </div>
   );
 }
 

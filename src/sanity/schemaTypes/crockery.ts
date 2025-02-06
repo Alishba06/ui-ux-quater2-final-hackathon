@@ -35,7 +35,7 @@ export const Crockery = defineType({
             title: "Image",
             type: "image",
             options: {
-                hotspot: true, // Enable cropping and focal point selection
+                hotspot: true, 
             }
         }),
         defineField({
@@ -48,7 +48,7 @@ export const Crockery = defineType({
         defineField({
             name: "dimensions",
             title: "Dimensions",
-            type: "object", // Composite object for dimensions
+            type: "object",
             fields: [
               { name: "height", title: "Height", type: "string" },
               { name: "width", title: "Width", type: "string" },

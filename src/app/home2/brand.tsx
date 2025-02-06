@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { TbTruckDelivery } from "react-icons/tb";
 import { CiCircleCheck } from "react-icons/ci";
 import { LuSprout } from "react-icons/lu";
@@ -36,7 +37,7 @@ const Brand = () => {
          
           <div>
             <img
-              src="Purchase.png"
+              src="/Purchase.png"
               alt="purchase"
               className="w-[40px] h-[40px]"
             />
