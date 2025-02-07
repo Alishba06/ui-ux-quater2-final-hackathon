@@ -4,7 +4,6 @@ import CHero from "./components/CenterHero";
 import Feauter from "./components/Feautres";
 import Hero from "./components/HeroSection";
 import Email from "./components/information";
-import SearchBarHomePage from "./searchBar";
 
 export default function Home() {
   // const categories = [

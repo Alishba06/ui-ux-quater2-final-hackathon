@@ -3,9 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link";
-import { Product } from "@/types/products";
-import { addtoCart } from "@/app/actions/actions";
-import Swal from "sweetalert2";
 import ReviewsAndRatings from "@/app/components/ReviewsAndRatings";
 import Wishlist from "@/app/components/wishlist";
 import Brand from "@/app/home2/brand";

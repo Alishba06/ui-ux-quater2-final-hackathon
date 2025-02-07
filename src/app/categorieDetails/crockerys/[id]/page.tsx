@@ -1,8 +1,11 @@
+
 /* eslint-disable @next/next/no-img-element */
 import AddtocardButton from "@/app/components/addtocardButton";
 import Brand from "@/app/home2/brand";
 import { client } from "@/sanity/lib/client";
-import Link from "next/link"; // Import Link for navigation
+import Link from "next/link"; 
+
+export const dynamicParams = true;
 
 interface Crockery {
   _id: string;

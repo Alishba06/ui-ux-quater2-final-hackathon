@@ -33,16 +33,6 @@ const ChairsProduct = () => {
     fetchChairs();
   }, []);
 
-  const handleAddToCart = (chair: Chair) => {
-    Swal.fire({
-      icon: "success",
-      title: `${chair.title} added to cart`,
-      position: "top-right",
-      showConfirmButton: false,
-      timer: 1200,
-      toast: true,
-    });
-  };
 
   return (
     <div>
