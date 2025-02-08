@@ -1,0 +1,23 @@
+Test Case ID,Test Description,Steps,Expected Result,Actual Result,Status,      Comments
+,,,,,,
+TC001,Validate product listing page,Open product listing page > Verify product display,Products display correctly,Products display correctly,              Pass,                None
+,,,,,,
+TC002,Validate data fetch from Sanity CMS,Verify that product data is fetched from Sanity,Product data fetched and displayed correctly,Product data fetched and displayed correctly,              Pass,               None
+,,,,,,
+TC003,Validate product detail page,Open product detail page by ID > Verify details,Product details display correctly,Product details display correctly,              Pass,                None
+,,,,,,
+TC004,Validate page navigation by product ID,Click on any product from listing page,Correct product detail page opens,Correct product detail page opens,              Pass,                None
+,,,,,             ,
+TC005,Validate Add to Cart functionality,"Select product > Click ""Add to Cart"" button",Product added to cart successfully,Product added successfully,              Pass,               None
+,,,,,,
+TC006,Validate cart page display,Navigate to cart page,Cart displays added products,Cart displays added products,             Pass,               None
+,,,,,,
+TC007,Validate cart total calculation,Add multiple products to cart,Correct total amount displayed,Correct total amount displayed,             Pass,               None
+,,,,,,
+TC008,Validate checkout page rendering,Navigate to checkout page,Checkout page displays correctly,Checkout page displays correctly,             Pass,                None
+,,,,,,
+TC009,Validate order summary display,Add products and navigate to checkout,Correct order summary displayed,Correct order summary displayed,              Pass,                None
+,,,,,,
+TC010,Validate search functionality (Pending),Open search bar > Enter product name,Search results displayed,Functionality not implemented,              Pending,        To be updated
+,,,,,,
+TC011,Validate payment integration (Pending),Navigate to checkout > Make payment,Payment processed successfully,Functionality not implemented,              Pending,         To be updated

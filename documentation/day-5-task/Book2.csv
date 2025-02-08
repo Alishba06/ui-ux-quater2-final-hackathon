@@ -1,0 +1,27 @@
+TC No,Test Scenario,                                              Test Steps,                                                Expected Result,                      Actual Result,Status,                                       Priority,  Comments
+,,,,,,,
+TC001,Validate product listing page,Open product listing page > Verify product display,Products should display correctly,Products display correctly,         Pass,High,No issues found
+,,,,,,,
+TC002,Validate product listing page,Open product listing page > Verify product display,Products should display correctly,Products display correctly,         Pass,Hight,No issues found
+,,,,,,,
+TC003,Validate Add to Cart functionality,Add product to cart > Verify product is added,Product should be added to cart and visible in cart page,Product is added and visible in cart,         Pass,Hight,No  issue  found
+,,,,,,,
+TC004,Validate Cart Page functionality,Open cart page > Verify product list and update/delete options,Products should be listed with options to update/delete,Products display with update/delete options,         Pass,Hight,No  issue  found
+,,,,,,,
+TC005,Validate Checkout Page functionality,Navigate to checkout page > Verify UI and form,Checkout form should display and allow order placement,Checkout form is functional,        Pass,High,No issues found
+,,,,,,,
+TC006,Validate stock synchronization with Sanity,Buy product > Check stock status in Sanity CMS,Stock should decrease after purchase,Stock updates correctly,        Pass,High,No issues  found
+,,,,,,,
+TC007,Validate responsive design,Open website on multiple screen sizes,Website should render properly on all screens,Website is responsive,        Pass, High,No issues  found
+,,,,,,,
+TC008,Validate Wishlist addition (Future Feature),Click on product heart icon > Add to Wishlist,Item should be added to Wishlist,Item should be added to Wishlist,      Future,Feature pending implementation,
+,,,,,,,
+TC009,Validate Search Bar functionality (Pending),Enter search query in header > Verify search results,Relevant products should display,Pending,      Future, Search functionality not implemented,
+,,,,,,,
+TC010,Validate Payment Integration (Pending),Click checkout > Process payment through Stripe,Payment should process successfully,Pending,     Future,Payment integration not implemented,
+,,,,,,,
+TC011,Validate user session persistence,Logout and Login again > Verify cart persistence,Cart and user session should persist,Cart persists after login,      Pass,Medium,No issues found
+,,,,,,,
+TC012,Validate error handling on checkout page,Leave required fields empty > Try to submit,Validation errors should display,Errors displayed,      Pass,Medium,No issues found
+,,,,,,,
+TC013,Validate cart persistence on refresh,Refresh the cart page > Verify items in cart,Cart should persist after page refresh,Cart persists after refresh,      Pass,  Medium,No issues found
